@@ -70,7 +70,7 @@ const Login = props => {
           </form>
 
           <div id="formFooter">
-            <Link to='/forgot'><a className="underlineHover">Forgot Password?</a></Link>
+            <Link to='/forgot' className="underlineHover">Forgot Password?</Link>
           </div>
         </div>
       </div>
