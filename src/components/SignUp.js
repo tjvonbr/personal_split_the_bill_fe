@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
+import { Button, Icon, List, Container } from "semantic-ui-react";
 
 import Table from '../img/table.jpg';
 import "./Login.css";
@@ -63,7 +64,8 @@ const SignUp = ({ errors, touched}) => {
         
         <div id="formContent">
           <Link to='/'>
-          <h2 className="inactive underlineHover" > Sign In </h2>
+          <h2 className="inactive underlineHover" >Sign In </h2>
+          {/* <span>.  .</span> */}
           </Link>
           <h2 className="active" >Sign Up </h2>
 
@@ -75,7 +77,7 @@ const SignUp = ({ errors, touched}) => {
               id="login"
               className="fadeIn second"
               name="name"
-              placeholder="first"
+              placeholder="name"
               value={inputs.first}
               onChange={handleChange}
             />
@@ -111,7 +113,7 @@ const SignUp = ({ errors, touched}) => {
           </form>
 
           <div id="formFooter">
-            <a className="underlineHover">All fields required!</a>
+            <a className="underlineHover">All fields are required!</a>
           </div>
         </div>
       </div>

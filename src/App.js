@@ -36,7 +36,6 @@ function App() {
       <div>
       
         <div>
-          {/* <h1>Split The Bill</h1> */}
           <Route exact path='/signup' component={SignUp} />
           <Route exact path="/" component={Login} />
           <PrivateRoute path='/welcome' component={UserHome} />
