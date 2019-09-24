@@ -1,0 +1,43 @@
+.container {
+  text-align: center;
+  padding: 5%;
+}
+
+.container h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #20262e;
+}
+
+.icons-container{
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.icons {
+  width: 200px;
+  height: auto;
+  text-align: center;
+}
+.icons:nth-child(1) a {
+  color: #6435c9
+}
+.icons:nth-child(1) a:hover {
+  color: #4c279c
+}
+.icons:nth-child(2) a {
+  color: #00b5ad
+}
+.icons:nth-child(2) a:hover {
+  color: #057974
+}
+
+.icons:nth-child(3) a {
+  color: #e03997
+}
+.icons:nth-child(3) a:hover {
+  color: #b52f7a
+}
