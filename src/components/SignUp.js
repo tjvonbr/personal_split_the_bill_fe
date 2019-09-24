@@ -10,33 +10,33 @@ import Table from '../img/table.jpg';
 import "./SignUp.css";
 
 const SignUp = props => {
-  const [inputs, setInputs] = useState({
-    name: "",
-    email: "",
-    password: ""
-  });
+  // const [inputs, setInputs] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: ""
+  // });
 
-  const handleSubmit = e => {
-    if (e) {
-      e.preventDefault();
+  // const handleSubmit = e => {
+  //   if (e) {
+  //     e.preventDefault();
 
-      axiosWithAuth()
-        .put("/friend", inputs) // change  this later from backend
-        .then(res => {
-          localStorage.setItem("token", res.data.payload);
-        })
-        .catch(err => console.log(err));
-    }
-  };
+  //     axiosWithAuth()
+  //       .put("/friend", inputs) // change  this later from backend
+  //       .then(res => {
+  //         localStorage.setItem("token", res.data.payload);
+  //       })
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
-  const handleChange = e => {
-    e.persist();
-    setInputs(inputs => ({
-      ...inputs,
-      [e.target.name]: e.target.value
-    }));
-    console.log(inputs);
-  };
+  // const handleChange = e => {
+  //   e.persist();
+  //   setInputs(inputs => ({
+  //     ...inputs,
+  //     [e.target.name]: e.target.value
+  //   }));
+  //   console.log(inputs);
+  // };
 
   return (
     <>
@@ -53,8 +53,8 @@ const SignUp = props => {
 
           <div className="fadeIn first"></div>
 
-          <form onSubmit={handleSubmit}>
-            <input
+          <Form onSubmit={handleSubmit}>
+            <Field
               type="text"
               id="login"
               className="fadeIn second"
@@ -63,7 +63,7 @@ const SignUp = props => {
               value={inputs.first}
               onChange={handleChange}
             />
-            <input
+            <Field
               type="text"
               id="password"
               className="fadeIn third"
@@ -92,7 +92,7 @@ const SignUp = props => {
             />
             
             <input type="submit" className="fadeIn fourth" value="Sign Up" />
-          </form>
+          </Form>
 
           <div id="formFooter">
             <a className="underlineHover">All fields are required!</a>

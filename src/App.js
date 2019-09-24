@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import PrivateRoute from './utils/PrivateRoute';
 import Nav from "./components/Nav";
-import Login from "./components/Login";
+import FormikLoginForm from "./components/Login";
 import SignUp from './components/SignUp';
 import UserHome from './components/UserHome';
 
@@ -37,7 +37,7 @@ function App() {
       
         <div>
           <Route exact path='/signup' component={SignUp} />
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={FormikLoginForm} />
           <PrivateRoute path='/welcome' component={UserHome} />
         </div>
       </div>
