@@ -8,8 +8,7 @@ import * as Yup from 'yup';
 
 import Table from '../img/table.jpg';
 import "./Login.css";
-import useForm from '../components/FormValidation/UseForm';
-import validate from '../components/FormValidation/LoginFormRules';
+
 
 const Login = props => {
   const [inputs, setInputs] = useState({
@@ -17,12 +16,6 @@ const Login = props => {
     password: ""
   });
 
-  // const {
-  //   values,
-  //   errors,
-  //   handleChange,
-  //   handleSubmit,
-  // } = useForm(login, validate);
   const handleSubmit = e => {
     if (e) {
       e.preventDefault();
