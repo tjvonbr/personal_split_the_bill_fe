@@ -9,7 +9,7 @@ import { Button, Icon, List, Container } from "semantic-ui-react";
 import Table from '../img/table.jpg';
 import "./SignUp.css";
 
-const SignUp = props => {
+function SignUp ({ errors, touched, values}) {
   // const [inputs, setInputs] = useState({
   //   name: "",
   //   email: "",
@@ -53,45 +53,46 @@ const SignUp = props => {
 
           <div className="fadeIn first"></div>
 
-          <Form onSubmit={handleSubmit}>
+          <Form >
             <Field
               type="text"
               id="login"
               className="fadeIn second"
-              name="name"
-              placeholder="name"
-              value={inputs.first}
-              onChange={handleChange}
+              name="firstName"
+              placeholder="first name"
+            />
+            <Field
+              type="text"
+              id="login"
+              className="fadeIn second"
+              name="lastName"
+              placeholder="last Name"
             />
             <Field
               type="text"
               id="password"
               className="fadeIn third"
-              name="last"
-              placeholder="email"
-              value={inputs.email}
-              onChange={handleChange}
+              name="email"
+              placeholder="Jane@gmail.com"
             />
-            <input
+            {touched.email && errors.email && <p>{errors.email}</p>}
+            <Field
               type="text"
               id="password"
               className="fadeIn third"
               name="password"
               placeholder="******"
-              value={inputs.password}
-              onChange={handleChange}
             />
-            <input
+            {touched.password && errors.password && <p>{errors.password}</p>}
+            {/* <Field
               type="text"
               id="password"
               className="fadeIn third"
-              name="password"
+              name="passwordConfirm"
               placeholder="******"
-              value={inputs.password}
-              onChange={handleChange}
             />
-            
-            <input type="submit" className="fadeIn fourth" value="Sign Up" />
+            {touched.passwordConfirm && errors.passwordConfirm && <p>{errors.passwordConfirm}</p>} */}
+            <button type="submit" className="fadeIn fourth" >{' '}Join{' '}</button>
           </Form>
 
           <div id="formFooter">
@@ -103,4 +104,47 @@ const SignUp = props => {
   );
 };
 
-export default SignUp;
+// export default SignUp;
+const FormikSignUpForm = withFormik({
+  mapPropsToValues({ firstName, lastName, email, password, passwordConfirm }) {
+    return {
+      firstName: firstName || '',
+      lastName: lastName || '',
+      email: email || '',
+      password: password || '',
+      // passwordConfirm: passwordConfirm || ''
+    }
+  },
+  validationSchema: Yup.object().shape({
+    firstName: Yup.string().required('First name requied'),
+    lastName: Yup.string().required('Last name required'),
+    email: Yup.string().required('Email is required'),
+    password: Yup.string().required('Password is required').min(6),
+    // passwordConfirm: Yup().string().required('Please confirm password')
+    // .oneOf([Yup.ref('password'), null], "Password don't match")
+  }),
+
+  handleSubmit(values, props, resetForm) {
+    console.log('signup first values', values.firstName)
+    console.log('signup', values.lastName)
+    console.log('signup email', values.email)
+    console.log('signup password', values.password)
+
+    let submitValues = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      password: values.password
+    };
+
+    axiosWithAuth()
+    .post('/register', submitValues)
+    .then(res => {
+      console.log('signup success', res.data)
+    })
+    .catch(err => console.log(err.response))
+  }
+
+})(SignUp)
+
+export default FormikSignUpForm;
