@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import "semantic-ui-css/semantic.min.css";
 import { Button, Icon, List, Container } from "semantic-ui-react";
-import Table from '../img/table_with_view.jpg';
 import TableNav from "./TableNav";
 
 
@@ -14,9 +13,10 @@ const Test = styled.button`
 const UserHome = () => {
   return (
     <>
-    <img className='table-img' src={Table} alt='table' />
-    <TableNav />
+
     
+    <TableNav />
+
       <div className="container">
         <h1>welcome back</h1>
         <Container>

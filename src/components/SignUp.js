@@ -7,32 +7,14 @@ import * as Yup from 'yup';
 import { Button, Icon, List, Container } from "semantic-ui-react";
 
 import Table from '../img/table.jpg';
-import "./Login.css";
+import "./SignUp.css";
 
-const SignUp = ({ errors, touched}) => {
+const SignUp = props => {
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
     password: ""
   });
-
-  // const [form, setForm] = useState({ signup: false, login: true });
-
-  // // const getInitialState = () => {
-  // //   return {signup: false, login: true}
-  // // }
-
-  // const switchForm = word => {
-  //   let signup, login;
-  //   if (word === "signup") {
-  //     signup = true;
-  //     login = false;
-  //   } else {
-  //     login = true;
-  //     signup = false;
-  //   }
-  //   return setForm({ login: login, signup: signup });
-  // };
 
   const handleSubmit = e => {
     if (e) {

@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from 'react-router-dom';
+import styled from "styled-components";
+
+import { Form, Field as input, withFormik } from 'formik';
+import * as Yup from 'yup';
 
 import Table from '../img/table.jpg';
 import "./Login.css";
+import useForm from '../components/FormValidation/UseForm';
+import validate from '../components/FormValidation/LoginFormRules';
 
 const Login = props => {
   const [inputs, setInputs] = useState({
@@ -11,6 +17,12 @@ const Login = props => {
     password: ""
   });
 
+  // const {
+  //   values,
+  //   errors,
+  //   handleChange,
+  //   handleSubmit,
+  // } = useForm(login, validate);
   const handleSubmit = e => {
     if (e) {
       e.preventDefault();
@@ -34,6 +46,7 @@ const Login = props => {
     console.log(inputs);
   }
 
+
   return (
     <>
     <img className='table-img' src={Table} alt='table' />
@@ -47,15 +60,18 @@ const Login = props => {
 
           <div className="fadeIn first"></div>
 
-          <form onSubmit={handleSubmit}>
-            <input
+          <Form onSubmit={handleSubmit} >
+            <input 
+            
+            
               type="text"
               id="login"
               className="fadeIn second"
               name="username"
               placeholder="login"
-              value={inputs.username}
+              value={inputs.email}
               onChange={handleChange}
+              required
             />
             <input
               type="password"
@@ -67,7 +83,7 @@ const Login = props => {
               onChange={handleChange}
             />
             <input type="submit" className="fadeIn fourth" value="Log In" />
-          </form>
+          </Form>
 
           <div id="formFooter">
             <Link to='/forgot' className="underlineHover">Forgot Password?</Link>
@@ -79,3 +95,34 @@ const Login = props => {
 };
 
 export default Login;
+// const FormikLoginForm = withFormik({
+//   mapPropsToValues({ email, password }) {
+//     return {
+//       email: email || "",
+//       password: password || ""
+//     };
+//   },
+//   validationSchema: Yup.object().shape({
+//     email: Yup.string().required("Email is required"),
+//     password: Yup.string().required("Password is required")
+//   }),
+//   handleSubmit(values, { resetForm, setStatus, props }) {
+//     axiosWithAuth()
+//       .post(`'/login'`, values)
+//       .then(res => {
+//         // console.log(
+//         //   "login success, login Payload =",
+//         //   res.data.token,
+//         //   res.data.id
+//         // );
+//         setStatus(res.data.token);
+//         resetForm();
+//         localStorage.setItem("token", res.data.payload);
+//         // localStorage.setItem("id", res.data.id);
+//         props.history.push("/welcome");
+//       })
+//       .catch(err => console.log(err.response));
+//   }
+// })(Login);
+
+// export default FormikLoginForm;
