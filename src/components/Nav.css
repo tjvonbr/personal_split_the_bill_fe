@@ -1,0 +1,56 @@
+.toolbar {
+  width: 100%;
+  background: #56baed;
+  height: 56px;
+}
+
+.toolbar_navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+.toolbar_logo {
+  margin-left: 1rem;
+}
+
+.toolbar_logo h1 {
+  color: white;
+}
+/* FLEX everything else to the end */
+.spacer {
+  flex: 1;
+}
+
+.toolbar-navigation-items {
+  display: flex;
+}
+
+.toolbar-navigation-items a {
+  color: white;
+  padding: 0 0.5rem;
+  font-size: 1.3rem;
+  line-height: 1em;
+}
+
+.toolbar-navigation-items a:hover {
+  cursor: pointer;
+  color: #282c34;
+}
+
+.toolbar-navigation-items a:active {
+  color: aqua;
+}
+
+@media (max-width: 768px) {
+  .toolbar-navigation-items {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .toolbar-toggle-button {
+    display: none;
+  }
+}
