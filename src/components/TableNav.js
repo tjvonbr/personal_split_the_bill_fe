@@ -23,26 +23,19 @@ const Image = styled.img`
   width: 100%;
   height: 300px;
   margin-bottom: -4px;
+  
 `
-const StyledDiv = styled.div`
-  display: flex;
-  align-content: space-between;
-  color: white;
-`
+
 
 const TableNav = () => {
   return (
     <>
-    <Image src={Table} alt='table' />
+    <Image src={Table} alt='table' ></Image>
     <Header>
       <Nav>
-        <StyledDiv>
-        <Link to="/welcome">Person</Link>
+        {/* <Link to="/welcome">Person</Link>
           <Link to="/">Plate</Link>
-          <Link to="/signup">$$$</Link>
-        </StyledDiv>
-          
-          
+          <Link to="/signup">$$$</Link> */}
     
       </Nav>
     </Header>

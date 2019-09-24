@@ -1,59 +1,51 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
+import "./UserHome.css";
 
 import "semantic-ui-css/semantic.min.css";
 import { Button, Icon, List, Container } from "semantic-ui-react";
 import TableNav from "./TableNav";
 
-
-const Test = styled.button`
-  color: red;
+const IconContacts = styled(Icon)`
+  cursor: pointer;
+`;
+const IconTable = styled(Icon)`
+  cursor: pointer;
+  color= teal;
+  &:hover {
+    color: #057974;
+  }
 `;
 
 const UserHome = () => {
   return (
     <>
-
-    
-    <TableNav />
+      <TableNav />
 
       <div className="container">
         <h1>welcome back</h1>
-        <Container>
-          <h4>last payments you made</h4>
-
-          <List divided verticalAlign="middle">
-            <List.Item>
-              <List.Content floated="right">
-                <Button>Add</Button>
-              </List.Content>
-
-              <List.Content>
-                <Icon name="home" size="small" />
-                Lena
-              </List.Content>
-            </List.Item>
-            <List.Item>
-              <List.Content floated="right">
-                <Button>Add</Button>
-              </List.Content>
-              <List.Content>Lindsay</List.Content>
-            </List.Item>
-            <List.Item>
-              <List.Content floated="right">
-                <Button>Add</Button>
-              </List.Content>
-              <List.Content>Mark</List.Content>
-            </List.Item>
-            <List.Item>
-              <List.Content floated="right">
-                <Button>Add</Button>
-              </List.Content>
-              <List.Content>Molly</List.Content>
-            </List.Item>
-          </List>
-          <Test>I am a button</Test>
-        </Container>
+      </div>
+      <div className="icons-container">
+        <div className="icons">
+          <Link to="/contacts">
+            <IconContacts color="violet" name="users" size="massive" />
+            <h4>Friends</h4>
+          </Link>
+        </div>
+        <div className="icons">
+          <Link to="/table">
+            <IconTable  name="table" size="massive" />
+            <h4>Add new table</h4>
+          </Link>
+        </div>
+        <div className="icons">
+          <Link to="/previous">
+            <IconTable color="pink" name="sync" size="massive" />
+            <h4>Previous Meals</h4>
+          </Link>
+        </div>
       </div>
     </>
   );
