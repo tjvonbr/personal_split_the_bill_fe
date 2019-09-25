@@ -4,11 +4,16 @@ import Order from './Order';
 import styled from 'styled-components';
 import { Button } from "semantic-ui-react";
 import * as yup from 'yup';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import axios from 'axios';
 
 const validationSchema = yup.object().shape({
     name: yup.string()
-                .max(50, 'Field cannot be longer than 50 characters')
+                .max(40, 'Field cannot be longer than 40 characters')
                 .required('Kindly input the name of the person'),
+    order: yup.string()
+                .max(40, 'Field cannot be longer than 40 characters')
+                .required('Kindly input the meal ordered'),
     plates: yup.number('Kindly select the number of plates'),
     price: yup.number()
                 .required('Kindly input the name of the person')
@@ -21,6 +26,8 @@ const initialForm = {
     price: '',
 };
 
+const mealApi = 'https://split-the-bill-bw.herokuapp.com/api/user/meal'
+
 function MealOrders() {
 
     //const [form, setForm] = useState(initialForm)
@@ -28,12 +35,21 @@ function MealOrders() {
 
     const handleSubmit = (input, actions) => {
         //setForm(input);
+        
         const infoToAdd = {
             name: input.name,
             plates: input.plates,
             price: input.price
         }
         setOrdered(ordered.concat(infoToAdd));
+        
+        axios.post(mealApi, infoToAdd)
+            .then(res => {
+                debugger
+            })
+            .catch(err => {
+                debugger
+            })
         //setForm(initialForm);
         actions.resetForm(initialForm);
     }
@@ -44,7 +60,7 @@ function MealOrders() {
         // _.remove(ordered, function(el) {
         //     return el.name === meal.name;
         // })
-        ordered.map((el) => el.name === meal.name? {} : null)
+        //ordered.map((el) => el.name === meal.name? {} : null)
         // delete()
         //setOrdered();
     }
@@ -98,6 +114,10 @@ function MealOrders() {
                             <span className='namespan'>
                                 <Field name='name' type='text' placeholder='Name' />
                                 <ErrorMessage name='name' component='div' />
+                            </span>
+                            <span className='namespan'>
+                                <Field name='order' type='text' placeholder='Meal Ordered' />
+                                <ErrorMessage name='order' component='div' />
                             </span>
                             <span>
                                 <Field className='dropdown' name='plates' component='select'>
