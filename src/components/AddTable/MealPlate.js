@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TableImage from '../../img/inside-restaurant.jpg';
-import './AddTable.css';
+import './MealTable.css';
 
 import MealOrders from '../MealPayment/MealOrders';
 
@@ -11,6 +11,8 @@ function MealPlate() {
     <>
     <img src={TableImage} className='table-img' alt='table' />
       <MealOrders />
+
+      
     </>
   )
 }
