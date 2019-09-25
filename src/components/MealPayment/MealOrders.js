@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import Order from './Order';
 import styled from 'styled-components';
+import { Button } from "semantic-ui-react";
 
 const initialForm = {
     name: '',
@@ -42,9 +43,16 @@ function MealOrders() {
             color: black;
             margin-top: 1em;
         }
-        span {
-            background-color: red;
-            width: 30%;
+        .form {
+            display: flex;
+            justify-content: center;
+
+            span {
+                width: 20vw;
+            }
+        }
+        table {
+            display: flex;
         }
     `
 
@@ -55,7 +63,7 @@ function MealOrders() {
                 onSubmit={handleSubmit}
                 render={props => {
                     return (
-                        <Form>
+                        <Form className='form'>
                             <span>
                                 <Field name='name' type='text' placeholder='Name' />
                             </span>
@@ -70,7 +78,9 @@ function MealOrders() {
                             <span>
                                 <Field name='price' type='number' placeholder='Price per Plate' />
                             </span>
-                            <button type='submit'>Add Meal</button>
+                            <span>
+                            <Button type='submit'>Add Meal</Button>
+                            </span>
                         </Form>
                     )
                 }} />
