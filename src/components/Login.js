@@ -1,121 +1,112 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { Link } from 'react-router-dom';
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+// import styled from "styled-components";
 
-import { Form, Field as input, withFormik } from 'formik';
-import * as Yup from 'yup';
+import axios from 'axios'
 
-import Table from '../img/table.jpg';
+import { Form, Field , withFormik } from "formik";
+import * as Yup from "yup";
+
+import Table from "../img/table.jpg";
 import "./Login.css";
 
-
-const Login = props => {
-  const [inputs, setInputs] = useState({
-    username: "",
-    password: ""
-  });
-
-  const handleSubmit = e => {
-    if (e) {
-      e.preventDefault();
-
-      axiosWithAuth()
-      .post('/login', inputs)
-      .then(res => {
-        localStorage.setItem('token', res.data.payload)
-        props.history.push('/welcome');
-      })
-      .catch(err => console.log(err))
-    }
-  }
-
-  const handleChange = e => {
-    e.persist();
-    setInputs(inputs => ({
-      ...inputs,
-      [e.target.name]: e.target.value
-    }));
-    console.log(inputs);
-  }
-
-
+function Login({ errors, touched }) {
   return (
     <>
-    <img className='table-img' src={Table} alt='table' />
+      <img className="table-img" src={Table} alt="table" />
 
       <div className="wrapper fadeInDown">
         <div id="formContent">
           <h2 className="active"> Sign In </h2>
-          <Link to='/signup'>
-          <h2 className="inactive underlineHover">Sign Up </h2>
+          <Link to="/signup">
+            <h2 className="inactive underlineHover">Sign Up </h2>
           </Link>
-
           <div className="fadeIn first"></div>
-
-          <Form onSubmit={handleSubmit} >
-            <input 
-            
-            
+          <Form >
+            {touched.username  && errors.username && <p> {errors.username} </p>}
+            <Field
               type="text"
               id="login"
               className="fadeIn second"
               name="username"
-              placeholder="login"
-              value={inputs.email}
-              onChange={handleChange}
-              required
+              placeholder="user name"
             />
-            <input
+            <Field
               type="password"
               id="password"
               className="fadeIn third"
               name="password"
               placeholder="password"
-              value={inputs.password}
-              onChange={handleChange}
             />
-            <input type="submit" className="fadeIn fourth" value="Log In" />
+            {touched.password && errors.password && <p> {errors.password} </p>}
+            <button type="submit" className="fadeIn fourth"  >{' '}Login{' '}</button>
           </Form>
 
           <div id="formFooter">
-            <Link to='/forgot' className="underlineHover">Forgot Password?</Link>
+            <Link to="/forgot" className="underlineHover">
+              Forgot Password?
+            </Link>
           </div>
         </div>
       </div>
     </>
   );
-};
+}
 
-export default Login;
-// const FormikLoginForm = withFormik({
-//   mapPropsToValues({ email, password }) {
-//     return {
-//       email: email || "",
-//       password: password || ""
-//     };
-//   },
-//   validationSchema: Yup.object().shape({
-//     email: Yup.string().required("Email is required"),
-//     password: Yup.string().required("Password is required")
-//   }),
-//   handleSubmit(values, { resetForm, setStatus, props }) {
-//     axiosWithAuth()
-//       .post(`'/login'`, values)
-//       .then(res => {
-//         // console.log(
-//         //   "login success, login Payload =",
-//         //   res.data.token,
-//         //   res.data.id
-//         // );
-//         setStatus(res.data.token);
-//         resetForm();
-//         localStorage.setItem("token", res.data.payload);
-//         // localStorage.setItem("id", res.data.id);
-//         props.history.push("/welcome");
+// export default Login;
+const FormikLoginForm = withFormik({
+  mapPropsToValues({ username, password }) {
+    return {
+      username: username || "",
+      password: password || ""
+    };
+  },
+  validationSchema: Yup.object().shape({
+    username: Yup.string().required("Username is required"),
+    password: Yup.string().required("Password is required")
+  }),
+  handleSubmit(values, { resetForm, setStatus, props }) {
+    let submitValues = {
+      username: values.username,
+      password: values.password
+    }
+ console.log(values.username, values.password)
+    axios
+      .post('http://split-the-bill-bw.herokuapp.com/api/user/login', submitValues)
+      .then(res => {
+        console.log(
+          "login success, login Payload =",
+          res.data.token,
+          res.data.message
+        );
+        setStatus(res.data.message);
+        resetForm();
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("id", res.data.id);
+        props.history.push("/welcome");
+      })
+      .catch(err => console.log(err.response));
+  }
+})(Login);
+
+export default FormikLoginForm;
+
+
+// var api_key = process.env.API_KEY;
+
+// export const loginHandler = (u,p) => dispatch => {
+//     axios
+//       .post(`http://thewebbranch.com/oauth/token`, `grant_type=password&username=${u}&password=${p}`,{
+//         headers:{
+//           'Authorization':`Basic ${api_key}`,
+//           'Content-Type': 'application/x-www-form-urlencoded'
+//         }
 //       })
-//       .catch(err => console.log(err.response));
+//       .then(res=> dispatch({ type: LOGIN, payload:res }))
+//       .catch(err => dispatch({type:LOGIN_FAIL,payload:err}))  
 //   }
-// })(Login);
-
-// export default FormikLoginForm;
+// {
+//   "username": "bvonbru",
+//   "password": "test123"
+// }

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import PrivateRoute from './utils/PrivateRoute';
+import PrivateRoute from "./utils/PrivateRoute";
 import Nav from "./components/Nav";
-import Login from "./components/Login";
-import SignUp from './components/SignUp';
-import UserHome from './components/UserHome';
+import FormikLoginForm from "./components/Login";
+import FormikSignUpForm from "./components/SignUp";
+import UserHome from "./components/UserHome";
 
-import BackDrop from './components/BackDrop/BackDrop';
+import MealPlate from './components/AddTable/MealPlate'
+
+import BackDrop from "./components/BackDrop/BackDrop";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import MealOrders from './components/MealPayment/MealOrders';
 
@@ -30,20 +32,19 @@ function App() {
 
   return (
     <>
-    <Nav drawerClickHandler={drawerToggleClickHandler}/>
+      <Nav drawerClickHandler={drawerToggleClickHandler} />
       <SideDrawer show={state} />
       {backdrop}
 
       <div>
-      
         <div>
-          <Route exact path='/signup' component={SignUp} />
-          <Route exact path="/" component={Login} />
-          <PrivateRoute path='/welcome' component={UserHome} />
+          <Route exact path="/" component={FormikLoginForm} />
+          <Route exact path="/signup" component={FormikSignUpForm} />
+          <PrivateRoute path="/welcome" component={UserHome} />
+          <PrivateRoute path="/Plate" component={MealPlate} />
           <Route exact path='/meal' component={MealOrders} />
         </div>
       </div>
-    
     </>
   );
 }
