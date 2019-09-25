@@ -46,9 +46,28 @@ function MealOrders() {
         .form {
             display: flex;
             justify-content: center;
+            border: 3px solid rgb(8,186,237);
+            background-color: rgb(95,110,128, 0.4);
+            padding: 8px;
+
 
             span {
-                width: 20vw;
+                width: 30vw;
+                display: flex;
+                height: 40px;
+
+                .dropdown {
+                    background-color: rgb(8,186,237);
+                    width: 70%;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 1.3em;
+                }
+            }
+
+            .namespan {
+                width: 60em;
+                padding-left: 5em;
             }
         }
         table {
@@ -64,11 +83,11 @@ function MealOrders() {
                 render={props => {
                     return (
                         <Form className='form'>
-                            <span>
+                            <span className='namespan'>
                                 <Field name='name' type='text' placeholder='Name' />
                             </span>
                             <span>
-                                <Field name='plates' component='select'>
+                                <Field className='dropdown' name='plates' component='select'>
                                     <option label='Number of Plates'/>
                                     {[...Array(10).keys()].map((plate) => 
                                     <option value={plate}>{`${plate} plates`}</option>
