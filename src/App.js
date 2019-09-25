@@ -10,6 +10,7 @@ import MealPlate from './components/AddTable/MealPlate'
 
 import BackDrop from "./components/BackDrop/BackDrop";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
+import MealOrders from './components/MealPayment/MealOrders';
 
 import "./App.css";
 
@@ -39,11 +40,9 @@ function App() {
         <div>
           <Route exact path="/" component={FormikLoginForm} />
           <Route exact path="/signup" component={FormikSignUpForm} />
-
           <PrivateRoute path="/welcome" component={UserHome} />
-
           <PrivateRoute path="/Plate" component={MealPlate} />
-          
+          <Route exact path='/meal' component={MealOrders} />
         </div>
       </div>
     </>
