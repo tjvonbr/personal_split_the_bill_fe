@@ -89,7 +89,7 @@ function SignUp ({ errors, touched, values}) {
   );
 };
 
-// export default SignUp;
+
 const FormikSignUpForm = withFormik({
   mapPropsToValues({ firstName, lastName, email, password, passwordConfirm }) {
     return {
@@ -109,7 +109,11 @@ const FormikSignUpForm = withFormik({
     // .oneOf([Yup.ref('password'), null], "Password don't match")
   }),
 
-  handleSubmit(values, props, resetForm) {
+  // resetForm() {
+  //   submitValues = {}
+  // },
+
+  handleSubmit(values, {resetForm, setStatus, props}) {
     console.log('signup first =', values.firstName)
     console.log('signup last = ', values.lastName)
     console.log('signup email =', values.username)
@@ -125,13 +129,15 @@ const FormikSignUpForm = withFormik({
       password: values.password
     };
 
-    axios
+    axiosWithAuth()
     .post('https://split-the-bill-bw.herokuapp.com/api/user/register', submitValues)
     .then(res => {
       console.log('signup success', res.data)
-      localStorage.setItem('token', JSON.stringify(res.data))
+      setStatus(res.data.token)
       resetForm();
-      props.history.push('/');
+      localStorage.setItem('token', JSON.stringify(res.data))
+      
+      props.history.push('/welcome');
     })
     .catch(err => console.log(err))
   }

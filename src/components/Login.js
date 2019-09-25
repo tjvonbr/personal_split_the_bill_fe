@@ -3,8 +3,6 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 // import styled from "styled-components";
 
-import axios from 'axios'
-
 import { Form, Field , withFormik } from "formik";
 import * as Yup from "yup";
 
@@ -72,8 +70,8 @@ const FormikLoginForm = withFormik({
       password: values.password
     }
  console.log(values.username, values.password)
-    axios
-      .post('http://split-the-bill-bw.herokuapp.com/api/user/login', submitValues)
+    axiosWithAuth()
+      .post('/login', submitValues)
       .then(res => {
         console.log(
           "login success, login Payload =",
