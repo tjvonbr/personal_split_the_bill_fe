@@ -24,12 +24,14 @@ const Order =({ ordered, handleDelete }) => {
         <OrderStyle>
             <tr>
                 <th><h3>Person</h3></th>
+                <th><h3>Meal Ordered</h3></th>
                 <th><h3>Plates</h3></th>
                 <th><h3>Price/Plate</h3></th>
             </tr>
             {ordered.map((orders => (
                 <tr key={orders.name}>
                     <td>{orders.name}</td>
+                    <td>{orders.order}</td>
                     <td>{orders.plates}</td>
                     <td>{orders.price}</td>
                     <Button onClick={() => handleDelete(orders)}>Delete</Button>

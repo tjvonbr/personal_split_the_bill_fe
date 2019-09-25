@@ -38,6 +38,7 @@ function MealOrders() {
         
         const infoToAdd = {
             name: input.name,
+            order: input.order,
             plates: input.plates,
             price: input.price
         }
