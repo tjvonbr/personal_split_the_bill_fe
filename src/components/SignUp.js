@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from 'react-router-dom';
 
+import axios from 'axios';
+
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button, Icon, List, Container } from "semantic-ui-react";
@@ -68,6 +70,15 @@ function SignUp ({ errors, touched, values}) {
               name="lastName"
               placeholder="last Name"
             />
+            <Field 
+              type='text'
+              id='login'
+              className="fadeIn third"
+              name="username"
+              placeholder="Please enter a user name"
+            />
+            {' '}
+            {touched.username && errors.username && <p>{errors.username}</p>}
             <Field
               type="text"
               id="password"
@@ -75,6 +86,7 @@ function SignUp ({ errors, touched, values}) {
               name="email"
               placeholder="Jane@gmail.com"
             />
+            {' '}
             {touched.email && errors.email && <p>{errors.email}</p>}
             <Field
               type="text"
@@ -125,10 +137,12 @@ const FormikSignUpForm = withFormik({
   }),
 
   handleSubmit(values, props, resetForm) {
-    console.log('signup first values', values.firstName)
-    console.log('signup', values.lastName)
-    console.log('signup email', values.email)
-    console.log('signup password', values.password)
+    console.log('signup first =', values.firstName)
+    console.log('signup last = ', values.lastName)
+    console.log('signup email =', values.username)
+
+    console.log('signup email =', values.email)
+    console.log('signup password =', values.password)
 
     let submitValues = {
       firstName: values.firstName,
@@ -137,12 +151,15 @@ const FormikSignUpForm = withFormik({
       password: values.password
     };
 
-    axiosWithAuth()
-    .post('/register', submitValues)
+    axios
+    .post('https://split-the-bill-bw.herokuapp.com/api/user/register', submitValues)
     .then(res => {
       console.log('signup success', res.data)
+      localStorage.setItem('token', JSON.stringify(res.data))
+      resetForm();
+      props.history.push('/');
     })
-    .catch(err => console.log(err.response))
+    .catch(err => console.log(err))
   }
 
 })(SignUp)

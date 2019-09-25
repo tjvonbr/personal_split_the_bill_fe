@@ -10,12 +10,23 @@ import TableNav from "./TableNav";
 
 const IconContacts = styled(Icon)`
   cursor: pointer;
+  color: #6435c9
+  &:hover {
+    color: #4c279c;
+  }
 `;
 const IconTable = styled(Icon)`
   cursor: pointer;
-  color= teal;
+  color: #00b5ad;
   &:hover {
     color: #057974;
+  }
+`;
+const IconCircle = styled(Icon)`
+  cursor: pointer;
+  color: #e03997;
+  &:hover {
+    color: #b52f7a;
   }
 `;
 
@@ -30,7 +41,7 @@ const UserHome = () => {
       <div className="icons-container">
         <div className="icons">
           <Link to="/contacts">
-            <IconContacts color="violet" name="users" size="massive" />
+            <IconContacts name="users" size="massive" />
             <h4>Friends</h4>
           </Link>
         </div>
@@ -42,7 +53,7 @@ const UserHome = () => {
         </div>
         <div className="icons">
           <Link to="/previous">
-            <IconTable color="pink" name="sync" size="massive" />
+            <IconCircle  name="sync" size="massive" />
             <h4>Previous Meals</h4>
           </Link>
         </div>

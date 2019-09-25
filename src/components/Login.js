@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+// import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+// import styled from "styled-components";
+
+import axios from 'axios'
 
 // import axios from "axios";
 
@@ -75,15 +77,15 @@ const FormikLoginForm = withFormik({
       password: values.password
     }
  console.log(values.username, values.password)
-    axiosWithAuth()
-      .post('http://localhost:5000/api/login', submitValues)
+    axios
+      .post('http://split-the-bill-bw.herokuapp.com/api/user/login', submitValues)
       .then(res => {
         console.log(
           "login success, login Payload =",
           res.data.token,
           res.data.id
         );
-        setStatus(res.data.token);
+        setStatus(res.data);
         resetForm();
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.id);
@@ -94,3 +96,22 @@ const FormikLoginForm = withFormik({
 })(Login);
 
 export default FormikLoginForm;
+
+
+// var api_key = process.env.API_KEY;
+
+// export const loginHandler = (u,p) => dispatch => {
+//     axios
+//       .post(`http://thewebbranch.com/oauth/token`, `grant_type=password&username=${u}&password=${p}`,{
+//         headers:{
+//           'Authorization':`Basic ${api_key}`,
+//           'Content-Type': 'application/x-www-form-urlencoded'
+//         }
+//       })
+//       .then(res=> dispatch({ type: LOGIN, payload:res }))
+//       .catch(err => dispatch({type:LOGIN_FAIL,payload:err}))  
+//   }
+// {
+//   "username": "bvonbru",
+//   "password": "test123"
+// }

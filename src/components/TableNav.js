@@ -31,14 +31,7 @@ const TableNav = () => {
   return (
     <>
     <Image src={Table} alt='table' ></Image>
-    <Header>
-      <Nav>
-        {/* <Link to="/welcome">Person</Link>
-          <Link to="/">Plate</Link>
-          <Link to="/signup">$$$</Link> */}
-    
-      </Nav>
-    </Header>
+   
     </>
   );
 };
