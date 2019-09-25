@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Order from './Order';
 import styled from 'styled-components';
 import { Button } from "semantic-ui-react";
@@ -9,7 +9,7 @@ const validationSchema = yup.object().shape({
     name: yup.string()
                 .max(50, 'Field cannot be longer than 50 characters')
                 .required('Kindly input the name of the person'),
-    //plates: yup.required('Kindly select the number of plates'),
+    plates: yup.number('Kindly select the number of plates'),
     price: yup.number()
                 .required('Kindly input the name of the person')
                 .positive('You have added a negative value')
@@ -97,6 +97,7 @@ function MealOrders() {
                         <Form className='form'>
                             <span className='namespan'>
                                 <Field name='name' type='text' placeholder='Name' />
+                                <ErrorMessage name='name' component='div' />
                             </span>
                             <span>
                                 <Field className='dropdown' name='plates' component='select'>
@@ -104,10 +105,12 @@ function MealOrders() {
                                     {[...Array(10).keys()].map((plate) => 
                                     <option value={plate}>{`${plate} plates`}</option>
                                     )}
+                                    <ErrorMessage name='plates' component='div' />
                                 </Field>
                             </span>
                             <span>
                                 <Field name='price' type='number' placeholder='Price per Plate' />
+                                <ErrorMessage name='price' component='span' />
                             </span>
                             <span>
                             <Button type='submit'>Add Meal</Button>
