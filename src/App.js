@@ -8,6 +8,7 @@ import UserHome from './components/UserHome';
 
 import BackDrop from './components/BackDrop/BackDrop';
 import SideDrawer from "./components/SideDrawer/SideDrawer";
+import MealOrders from './components/MealPayment/MealOrders';
 
 import "./App.css";
 
@@ -39,6 +40,7 @@ function App() {
           <Route exact path='/signup' component={SignUp} />
           <Route exact path="/" component={Login} />
           <PrivateRoute path='/welcome' component={UserHome} />
+          <Route exact path='/meal' component={MealOrders} />
         </div>
       </div>
     

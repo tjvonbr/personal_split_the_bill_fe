@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
+import Order from './Order';
+import styled from 'styled-components';
 
 const initialForm = {
     name: '',
@@ -26,14 +28,29 @@ function MealOrders() {
 
     const handleDelete = (meal) => {
         debugger
-        console.log(ordered)
-        ordered.map((el) => el.name === meal.name? setOrdered() : null)
+        console.log(ordered);
+        // _.remove(ordered, function(el) {
+        //     return el.name === meal.name;
+        // })
+        ordered.map((el) => el.name === meal.name? {} : null)
         // delete()
         //setOrdered();
     }
 
+    const MealOrdersStyle = styled.div`
+        h2 {
+            color: black;
+            margin-top: 1em;
+        }
+        span {
+            background-color: red;
+            width: 30%;
+        }
+    `
+
     return (
-        <div>
+        <MealOrdersStyle>
+            <h2>Meals and Prices</h2>
             <Formik initialForm={initialForm}
                 onSubmit={handleSubmit}
                 render={props => {
@@ -57,32 +74,11 @@ function MealOrders() {
                         </Form>
                     )
                 }} />
-            <h2>Meals and Prices</h2>
             <table>
                 <Order handleDelete={handleDelete} ordered={ordered} />
             </table>
             
-        </div>
-    )
-}
-
-const Order =({ ordered, handleDelete }) => {
-    return (
-        <div>
-            <tr>
-                <th>Person</th>
-                <th>No. of Plates</th>
-                <th>Price per Plate</th>
-            </tr>
-            {ordered.map((orders => (
-                <tr key={orders.name}>
-                    <td>{orders.name}</td>
-                    <td>{orders.plates}</td>
-                    <td>{orders.price}</td>
-                    <button onClick={() => handleDelete(orders)}>Delete</button>
-                </tr>
-            )))}
-        </div>
+        </MealOrdersStyle>
     )
 }
 
