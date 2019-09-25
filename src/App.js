@@ -42,7 +42,7 @@ function App() {
           <Route exact path="/signup" component={FormikSignUpForm} />
           <PrivateRoute path="/welcome" component={UserHome} />
           <PrivateRoute path="/Plate" component={MealPlate} />
-          <Route exact path='/meal' component={MealOrders} />
+          <PrivateRoute exact path='/meal' component={MealOrders} />
         </div>
       </div>
     </>

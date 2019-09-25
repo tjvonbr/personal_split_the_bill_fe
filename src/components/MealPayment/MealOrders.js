@@ -12,7 +12,7 @@ const validationSchema = yup.object().shape({
     plates: yup.number('Kindly select the number of plates'),
     price: yup.number()
                 .required('Kindly input the name of the person')
-                .positive('You have added a negative value')
+                .moreThan(-1, 'You have added a negative value')
 })
 
 const initialForm = {
