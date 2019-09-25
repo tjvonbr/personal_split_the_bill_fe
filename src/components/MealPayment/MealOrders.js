@@ -3,6 +3,17 @@ import { Formik, Form, Field } from 'formik';
 import Order from './Order';
 import styled from 'styled-components';
 import { Button } from "semantic-ui-react";
+import * as yup from 'yup';
+
+const validationSchema = yup.object().shape({
+    name: yup.string()
+                .max(50, 'Field cannot be longer than 50 characters')
+                .required('Kindly input the name of the person'),
+    //plates: yup.required('Kindly select the number of plates'),
+    price: yup.number()
+                .required('Kindly input the name of the person')
+                .positive('You have added a negative value')
+})
 
 const initialForm = {
     name: '',
@@ -79,6 +90,7 @@ function MealOrders() {
         <MealOrdersStyle>
             <h2>Meals and Prices</h2>
             <Formik initialForm={initialForm}
+                validationSchema={validationSchema}
                 onSubmit={handleSubmit}
                 render={props => {
                     return (
