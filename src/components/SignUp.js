@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from 'react-router-dom';
 
-import axios from 'axios';
 
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
-import { Button, Icon, List, Container } from "semantic-ui-react";
+// import { Button, Icon, List, Container } from "semantic-ui-react";
 
 import Table from '../img/table.jpg';
 import "./SignUp.css";
@@ -69,19 +68,11 @@ function SignUp ({ errors, touched, values}) {
               placeholder="******"
             />
             {touched.password && errors.password && <p>{errors.password}</p>}
-            {/* <Field
-              type="text"
-              id="password"
-              className="fadeIn third"
-              name="passwordConfirm"
-              placeholder="******"
-            />
-            {touched.passwordConfirm && errors.passwordConfirm && <p>{errors.passwordConfirm}</p>} */}
             <button type="submit" className="fadeIn fourth" >{' '}Join{' '}</button>
           </Form>
 
           <div id="formFooter">
-            <a className="underlineHover">All fields are required!</a>
+            <Link className="underlineHover">All fields are required!</Link>
           </div>
         </div>
       </div>

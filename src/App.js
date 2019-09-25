@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import Nav from "./components/Nav";
 import FormikLoginForm from "./components/Login";
@@ -40,7 +40,7 @@ function App() {
         <div>
           <Route exact path="/" component={FormikLoginForm} />
           <Route exact path="/signup" component={FormikSignUpForm} />
-          <PrivateRoute path="/welcome" component={UserHome} />
+          <PrivateRoute exact path="/welcome" component={UserHome} />
           <PrivateRoute path="/Plate" component={MealPlate} />
           <Route exact path='/meal' component={MealOrders} />
         </div>
