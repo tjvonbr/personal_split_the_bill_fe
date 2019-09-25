@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-// import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 // import styled from "styled-components";
 
 import axios from 'axios'
 
-// import axios from "axios";
-
-// as input
 import { Form, Field , withFormik } from "formik";
 import * as Yup from "yup";
 
@@ -25,9 +22,7 @@ function Login({ errors, touched }) {
           <Link to="/signup">
             <h2 className="inactive underlineHover">Sign Up </h2>
           </Link>
-
           <div className="fadeIn first"></div>
-
           <Form >
             {touched.username  && errors.username && <p> {errors.username} </p>}
             <Field
@@ -83,9 +78,9 @@ const FormikLoginForm = withFormik({
         console.log(
           "login success, login Payload =",
           res.data.token,
-          res.data.id
+          res.data.message
         );
-        setStatus(res.data);
+        setStatus(res.data.message);
         resetForm();
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.id);
