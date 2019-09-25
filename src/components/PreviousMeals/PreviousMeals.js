@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import "./PreviousMeals.css"
 
 
 const PreviousMeals = props => (
     <header className='PrevMeals_header'>
         <div className='navigation'>
-            <nav>
+            <nav className='toolbar_navigation'>
+                <div className='toolbar-toggle-button'>
+                    <DrawerToggleButton click={props.drawerClickHandler} />
+                </div>
+                <div className='toolbar_logo'><h1 >SplitTheBill</h1></div>
+                <div className='spacer'></div>
                 <div className='toolbar-navigation-items'>
                     <Link to="/welcome">Home</Link>
                     <Link to="/">Login</Link>
@@ -17,5 +23,7 @@ const PreviousMeals = props => (
         </div>
     </header>
 );
+
+
 
 export default PreviousMeals
