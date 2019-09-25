@@ -1,29 +1,42 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import "./PreviousMeals.css"
+import './PreviousMeals.css'
+import Nav from './../Nav'
 
 
-const PreviousMeals = props => (
-    <header className='PrevMeals_header'>
-        <div className='navigation'>
-            <nav className='toolbar_navigation'>
-                <div className='toolbar-toggle-button'>
-                    <DrawerToggleButton click={props.drawerClickHandler} />
-                </div>
-                <div className='toolbar_logo'><h1 >SplitTheBill</h1></div>
-                <div className='spacer'></div>
-                <div className='toolbar-navigation-items'>
-                    <Link to="/welcome">Home</Link>
-                    <Link to="/">Login</Link>
-                    <Link to="/signup">Sign Up</Link>
-                    <Link to="/contacts"> Contacts </Link>
-                    <Link to='/' onClick={logout}>Sign Out</Link>
-                </div>
-            </nav>
-        </div>
-    </header>
-);
+// const PreviousMeals = props => (
+//     <div className="prevMeals_container">
+//     <header className='PrevMeals_header'>
+//     </header>
+//     <h1>Previous Meals</h1>
+//     </div>
 
+// );
 
+const PrevMealsTableHead = () => {
+    return (
+        <thead>
+            <tr>
+                <th>Restaurant</th>
+                <th>Meal</th>
+                <th>Price</th>
+
+            </tr>
+        </thead>
+    )
+}
+
+const PrevMealsTableBody = props => {
+    const rows = props.someData.map((row, index) => {
+        return (
+            <tr key={index}>
+                <td>{row.restaurant}</td>
+                <td>{row.meal}</td>
+                <td>{row.price}</td>
+            </tr>
+        )
+    })
+    return <tbody>{rows}</tbody>
+}
 
 export default PreviousMeals
