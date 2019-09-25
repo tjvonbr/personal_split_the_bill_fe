@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import FormikLoginForm from '../components/Login'
 
 import styled from "styled-components";
 import "./UserHome.css";
@@ -30,13 +31,15 @@ const IconCircle = styled(Icon)`
   }
 `;
 
-const UserHome = () => {
+const UserHome = props => {
+  console.log(props)
   return (
     <>
       <TableNav />
 
       <div className="container">
-        <h1>welcome back</h1>
+        <h1>welcome back</h1> 
+        
       </div>
       <div className="icons-container">
         <div className="icons">
@@ -46,9 +49,9 @@ const UserHome = () => {
           </Link>
         </div>
         <div className="icons">
-          <Link to="/table">
+          <Link to="/plate">
             <IconTable  name="table" size="massive" />
-            <h4>Add new table</h4>
+            <h4>Add new expense</h4>
           </Link>
         </div>
         <div className="icons">

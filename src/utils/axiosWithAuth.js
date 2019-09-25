@@ -7,7 +7,7 @@ export const axiosWithAuth = () => {
   return axios.create({
     baseURL: 'https://split-the-bill-bw.herokuapp.com/api/user/',
     headers: {
-      authorization: token
+      Authorization: token
     }
   });
 };

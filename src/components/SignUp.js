@@ -12,33 +12,6 @@ import Table from '../img/table.jpg';
 import "./SignUp.css";
 
 function SignUp ({ errors, touched, values}) {
-  // const [inputs, setInputs] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: ""
-  // });
-
-  // const handleSubmit = e => {
-  //   if (e) {
-  //     e.preventDefault();
-
-  //     axiosWithAuth()
-  //       .put("/friend", inputs) // change  this later from backend
-  //       .then(res => {
-  //         localStorage.setItem("token", res.data.payload);
-  //       })
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
-  // const handleChange = e => {
-  //   e.persist();
-  //   setInputs(inputs => ({
-  //     ...inputs,
-  //     [e.target.name]: e.target.value
-  //   }));
-  //   console.log(inputs);
-  // };
 
   return (
     <>
