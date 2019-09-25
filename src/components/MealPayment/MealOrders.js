@@ -39,7 +39,7 @@ function MealOrders() {
     }
 
     const handleDelete = (meal) => {
-        debugger
+        // debugger
         console.log(ordered);
         // _.remove(ordered, function(el) {
         //     return el.name === meal.name;

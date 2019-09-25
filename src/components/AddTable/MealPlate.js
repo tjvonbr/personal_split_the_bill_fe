@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
-import TableNav from './TableNav';
+import React from 'react';
 
-import TableImage from '../../img/table_with_view.jpg';
-import './AddTable.css';
+import TableImage from '../../img/inside-restaurant.jpg';
+import './MealTable.css';
+
+import MealOrders from '../MealPayment/MealOrders';
 
 
 function MealPlate() {
   return (
     <>
     <img src={TableImage} className='table-img' alt='table' />
-      <TableNav />
+      <MealOrders />
+
+      
     </>
   )
 }

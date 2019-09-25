@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import FormikLoginForm from '../components/Login'
 
 import styled from "styled-components";
 import "./UserHome.css";
 
 import "semantic-ui-css/semantic.min.css";
-import { Button, Icon, List, Container } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 import TableNav from "./TableNav";
 
 const IconContacts = styled(Icon)`
@@ -31,15 +30,13 @@ const IconCircle = styled(Icon)`
   }
 `;
 
-const UserHome = props => {
-  console.log(props)
+const UserHome = () => {
   return (
     <>
       <TableNav />
 
       <div className="container">
-        <h1>welcome back</h1> 
-        
+        <h1>welcome back</h1>
       </div>
       <div className="icons-container">
         <div className="icons">
@@ -50,13 +47,13 @@ const UserHome = props => {
         </div>
         <div className="icons">
           <Link to="/plate">
-            <IconTable  name="table" size="massive" />
+            <IconTable name="table" size="massive" />
             <h4>Add new expense</h4>
           </Link>
         </div>
         <div className="icons">
           <Link to="/previous">
-            <IconCircle  name="sync" size="massive" />
+            <IconCircle name="sync" size="massive" />
             <h4>Previous Meals</h4>
           </Link>
         </div>
