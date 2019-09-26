@@ -52,12 +52,13 @@ const Order =({ ordered, handleDelete }) => {
                 <th><h3>Amount Owed</h3></th>
             </tr>
             {ordered.map((orders => (
-                <tr className={`tr${ordered.indexOf(orders)}`} key={ordered.indexOf(orders)}>
+                <tr key={ordered.indexOf(orders)}>
                     <td>{orders.name}</td>
                     <td className = 'column'>{orders.order}</td>
                     <td>{orders.plates}</td>
                     <td className = 'column'>{orders.price}</td>
                     <td >{Number(orders.plates) * orders.price}</td>
+                    <Button >Edit</Button>
                     <Button onClick={() => handleDelete(orders)}>Delete</Button>
                 </tr>
             )))}
