@@ -1,33 +1,30 @@
 import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-
-import { Form, Field, withFormik } from 'formik';
-import * as Yup from 'yup';
+import { Form, Field, withFormik } from "formik";
+import * as Yup from "yup";
 // import { Button, Icon, List, Container } from "semantic-ui-react";
 
-import Table from '../img/table.jpg';
+import Table from "../img/table.jpg";
 import "./SignUp.css";
 
-function SignUp ({ errors, touched, values}) {
-
+function SignUp({ errors, touched, values }) {
   return (
     <>
-    <img className='table-img' src={Table} alt='table' />
-   
+      <img className="table-img" src={Table} alt="table" />
+
       <div className="wrapper fadeInDown">
-        
         <div id="formContent">
-          <Link to='/'>
-          <h2 className="inactive underlineHover" >Sign In </h2>
-          {/* <span>.  .</span> */}
+          <Link to="/">
+            <h2 className="inactive underlineHover">Sign In </h2>
+            {/* <span>.  .</span> */}
           </Link>
-          <h2 className="active" >Sign Up </h2>
+          <h2 className="active">Sign Up </h2>
 
           <div className="fadeIn first"></div>
 
-          <Form >
+          <Form>
             <Field
               type="text"
               id="login"
@@ -42,14 +39,13 @@ function SignUp ({ errors, touched, values}) {
               name="lastName"
               placeholder="last Name"
             />
-            <Field 
-              type='text'
-              id='login'
+            <Field
+              type="text"
+              id="login"
               className="fadeIn third"
               name="username"
               placeholder="Please enter a user name"
-            />
-            {' '}
+            />{" "}
             {touched.username && errors.username && <p>{errors.username}</p>}
             <Field
               type="text"
@@ -57,8 +53,7 @@ function SignUp ({ errors, touched, values}) {
               className="fadeIn third"
               name="email"
               placeholder="Jane@gmail.com"
-            />
-            {' '}
+            />{" "}
             {touched.email && errors.email && <p>{errors.email}</p>}
             <Field
               type="text"
@@ -68,7 +63,10 @@ function SignUp ({ errors, touched, values}) {
               placeholder="******"
             />
             {touched.password && errors.password && <p>{errors.password}</p>}
-            <button type="submit" className="fadeIn fourth" >{' '}Join{' '}</button>
+            <button type="submit" className="fadeIn fourth">
+              {" "}
+              Join{" "}
+            </button>
           </Form>
 
           <div id="formFooter">
@@ -78,39 +76,34 @@ function SignUp ({ errors, touched, values}) {
       </div>
     </>
   );
-};
-
+}
 
 const FormikSignUpForm = withFormik({
   mapPropsToValues({ firstName, lastName, email, password, passwordConfirm }) {
     return {
-      firstName: firstName || '',
-      lastName: lastName || '',
-      email: email || '',
-      password: password || '',
+      firstName: firstName || "",
+      lastName: lastName || "",
+      email: email || "",
+      password: password || ""
       // passwordConfirm: passwordConfirm || ''
-    }
+    };
   },
   validationSchema: Yup.object().shape({
-    firstName: Yup.string().required('First name requied'),
-    lastName: Yup.string().required('Last name required'),
-    email: Yup.string().required('Email is required'),
-    password: Yup.string().required('Password is required').min(6),
-    // passwordConfirm: Yup().string().required('Please confirm password')
-    // .oneOf([Yup.ref('password'), null], "Password don't match")
+    firstName: Yup.string().required("First name requied"),
+    lastName: Yup.string().required("Last name required"),
+    email: Yup.string().required("Email is required"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(6)
   }),
 
-  // resetForm() {
-  //   submitValues = {}
-  // },
+  handleSubmit(values, { resetForm, setStatus, props }) {
+    console.log("signup first =", values.firstName);
+    console.log("signup last = ", values.lastName);
+    console.log("signup email =", values.username);
 
-  handleSubmit(values, {resetForm, setStatus, props}) {
-    console.log('signup first =', values.firstName)
-    console.log('signup last = ', values.lastName)
-    console.log('signup email =', values.username)
-
-    console.log('signup email =', values.email)
-    console.log('signup password =', values.password)
+    console.log("signup email =", values.email);
+    console.log("signup password =", values.password);
 
     let submitValues = {
       firstName: values.firstName,
@@ -121,18 +114,17 @@ const FormikSignUpForm = withFormik({
     };
 
     axiosWithAuth()
-    .post('https://split-the-bill-bw.herokuapp.com/api/user/register', submitValues)
-    .then(res => {
-      console.log('signup success', res.data)
-      setStatus(res.data.token)
-      resetForm();
-      localStorage.setItem('token', JSON.stringify(res.data))
-      
-      props.history.push('/welcome');
-    })
-    .catch(err => console.log(err))
-  }
+      .post("/register", submitValues)
+      .then(res => {
+        console.log("signup success", res.data);
+        setStatus(res.data.token);
+        resetForm();
+        localStorage.setItem("token", JSON.stringify(res.data));
 
-})(SignUp)
+        props.history.push("/welcome");
+      })
+      .catch(err => console.log(err));
+  }
+})(SignUp);
 
 export default FormikSignUpForm;

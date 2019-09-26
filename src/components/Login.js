@@ -1,7 +1,6 @@
 import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
-// import styled from "styled-components";
 
 import { Form, Field , withFormik } from "formik";
 import * as Yup from "yup";
@@ -61,7 +60,7 @@ const FormikLoginForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("Username is required"),
+    username: Yup.string().required("I'm not a Jedi"),
     password: Yup.string().required("Password is required")
   }),
   handleSubmit(values, { resetForm, setStatus, props }) {
