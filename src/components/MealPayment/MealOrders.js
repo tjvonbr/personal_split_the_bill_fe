@@ -22,6 +22,7 @@ const validationSchema = yup.object().shape({
 
 const initialForm = {
     name: '',
+    order: '',
     plates: '',
     price: '',
 };
@@ -35,22 +36,23 @@ function MealOrders() {
 
     const handleSubmit = (input, actions) => {
         //setForm(input);
-        
         const infoToAdd = {
             name: input.name,
             order: input.order,
             plates: input.plates,
             price: input.price
         }
-        setOrdered(ordered.concat(infoToAdd));
         
-        axios.post(mealApi, infoToAdd)
-            .then(res => {
-                debugger
-            })
-            .catch(err => {
-                debugger
-            })
+        setOrdered(ordered.concat(infoToAdd))
+        
+        
+        // axios.post(mealApi, infoToAdd)
+        //     .then(res => {
+        //         debugger
+        //     })
+        //     .catch(err => {
+        //         debugger
+        //     })
         //setForm(initialForm);
         actions.resetForm(initialForm);
     }
@@ -77,6 +79,10 @@ function MealOrders() {
             border: 3px solid rgb(8,186,237);
             background-color: rgb(95,110,128, 0.4);
             padding: 8px;
+
+            Button {
+                border: 1px solid black;
+            }
 
 
             span {
@@ -122,7 +128,7 @@ function MealOrders() {
                             </span>
                             <span>
                                 <Field className='dropdown' name='plates' component='select'>
-                                    <option label='Number of Plates'/>
+                                    <option disabled selected label='Plates'/>
                                     {[...Array(10).keys()].map((plate) => 
                                     <option value={plate}>{`${plate} plates`}</option>
                                     )}

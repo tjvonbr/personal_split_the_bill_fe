@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button } from "semantic-ui-react";
-
 
 const OrderStyle = styled.div`
     text-align: center;
@@ -20,6 +19,22 @@ const OrderStyle = styled.div`
 `
 
 const Order =({ ordered, handleDelete }) => {
+    
+    // const [total, setTotal] = useState(0)
+
+    // ordered.map((orders => (
+    //     setTotal(orders.price)
+    // )));
+
+    //setTotal(orders.price)
+    console.log(ordered);
+    const priceArray = ordered.map((orders => (
+        Number(orders.plates) * orders.price
+    )))
+    const platesArray = ordered.map((orders => (
+        Number(orders.plates)
+    )))
+
     return (
         <OrderStyle>
             <tr>
@@ -37,6 +52,23 @@ const Order =({ ordered, handleDelete }) => {
                     <Button onClick={() => handleDelete(orders)}>Delete</Button>
                 </tr>
             )))}
+            {
+                !ordered.length ? null : 
+                <tr>
+                    <td><h3>Total Amount</h3></td>
+                    <td>---</td>
+                    <td>
+                        {
+                            platesArray.reduce((a,b) => a+b, 0)
+                        }
+                    </td>
+                    <td>
+                        {
+                            priceArray.reduce((a,b) => a+b, 0)
+                        }
+                    </td>
+                </tr>
+            }
         </OrderStyle>
     )
 }
