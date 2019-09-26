@@ -11,6 +11,11 @@ const OrderStyle = styled.div`
         border-bottom: 2px solid black;
     }
 
+    th {
+        border-bottom: 4px solid black;
+        height: 2em;
+    }
+
     td {
         border: 1px solid grey;
         padding: 0 2em;
@@ -22,7 +27,14 @@ const OrderStyle = styled.div`
     
     tr:nth-child(odd) {
         background-color: rgb(86,186,237, 0.7);
+        animation-name: table;
+        animation-duration: 5s;
     }
+/* 
+    @keyframes table {
+        from {}
+        to {}
+    } */
 `
 
 const Order =({ ordered, handleDelete }) => {
@@ -68,15 +80,19 @@ const Order =({ ordered, handleDelete }) => {
                     <td><h3>Total Amount</h3></td>
                     <td>---</td>
                     <td>
+                        <h3>
                         {
                             platesArray.reduce((a,b) => a+b, 0)
                         }
+                        </h3>
                     </td>
-                    <td>---</td>
+                    <td><h3>---</h3></td>
                     <td>
+                        <h3>
                         {
                             priceArray.reduce((a,b) => a+b, 0)
                         }
+                        </h3>
                     </td>
                 </tr>
             }

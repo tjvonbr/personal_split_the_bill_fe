@@ -71,16 +71,22 @@ function MealOrders() {
     }
 
     const MealOrdersStyle = styled.div`
+
+        font-family: 'Vast Shadow'
+
         h2 {
             color: black;
             margin-top: 1em;
+            font-family: 'Vast Shadow';
         }
+
         .form {
             display: flex;
             justify-content: center;
             border: 3px solid rgb(8,186,237);
             background-color: rgb(95,110,128, 0.4);
             padding: 8px;
+            font-family: 'Vast Shadow';
 
             .hover {
                 &:hover {
@@ -97,12 +103,12 @@ function MealOrders() {
                 cursor: pointer;
                 }
             }
-
-
+            
             span {
                 width: 30vw;
                 display: flex;
                 height: 40px;
+                font-family: 'Vast Shadow';
 
                 .dropdown {
                     background-color: rgb(8,186,237, 0.4);
@@ -120,6 +126,7 @@ function MealOrders() {
             .namespan {
                 width: 60em;
                 padding-left: 1em;
+                font-family: 'Vast Shadow';
 
                 .name {
                     background-color: rgb(8,186,237, 0.4);
@@ -137,6 +144,7 @@ function MealOrders() {
         }
         table {
             display: flex;
+            transition: 2s;
         }
     `
 

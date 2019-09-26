@@ -2,6 +2,7 @@ import React from "react";
 import { Tab } from "semantic-ui-react";
 
 import AddPerson from './AddPerson'
+import MealOrders from '../MealPayment/MealOrders';
 
 
 const panes = [
@@ -17,7 +18,7 @@ const panes = [
     menuItem: { key: "user", icon: "food", content: "Add Plate" },
     render: () => (
       <Tab.Pane>
-        {/* <CharacterList /> */}
+        <MealOrders />
       </Tab.Pane>
     )
   },
