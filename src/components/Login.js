@@ -77,7 +77,7 @@ const FormikLoginForm = withFormik({
           res.data.token,
           res.data.message
         );
-        setStatus(res.data.message);
+        setStatus(res.data.token);
         resetForm();
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.id);
