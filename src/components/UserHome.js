@@ -46,7 +46,7 @@ const UserHome = () => {
           </Link>
         </div>
         <div className="icons">
-          <Link to="/plate">
+          <Link to="/meal">
             <IconTable name="table" size="massive" />
             <h4>Add new expense</h4>
           </Link>
