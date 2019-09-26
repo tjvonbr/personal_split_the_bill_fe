@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Order from './Order';
 import styled from 'styled-components';
@@ -44,7 +44,7 @@ function MealOrders() {
         }
         
         setOrdered(ordered.concat(infoToAdd))
-        
+        debugger
         
         // axios.post(mealApi, infoToAdd)
         //     .then(res => {
@@ -57,14 +57,15 @@ function MealOrders() {
         actions.resetForm(initialForm);
     }
 
-    const handleDelete = (meal) => {
-        debugger
+        const handleDelete = (meal) => {
         console.log(ordered);
         // _.remove(ordered, function(el) {
         //     return el.name === meal.name;
         // })
-        //ordered.map((el) => el.name === meal.name? {} : null)
+        const results = ordered.filter((el) => el.name !== meal.name) //? ordered.splice((ordered.indexOf(el)), 1) : null)
         // delete()
+        setOrdered(results);
+        debugger
         //setOrdered();
     }
 
