@@ -7,7 +7,6 @@ import FormikLoginForm from './components/Login';
 import FormikSignUpForm from './components/SignUp';
 import UserHome from './components/UserHome';
 
-import MealPlate from './components/AddTable/MealPlate';
 
 import BackDrop from './components/BackDrop/BackDrop';
 import SideDrawer from './components/SideDrawer/SideDrawer';
@@ -30,12 +29,12 @@ function App() {
   function backDropClickHandler() {
     setState(false);
   }
-
   return (
-    <>
+    <div>
       <Nav drawerClickHandler={drawerToggleClickHandler} />
       <SideDrawer show={state} />
       {backdrop}
+
       <Switch>
         <Route exact path='/' component={FormikLoginForm} />
         <Route exact path='/signup' component={FormikSignUpForm} />
@@ -43,7 +42,7 @@ function App() {
         {/* <PrivateRoute path='/Plate' component={MealPlate} /> */}
         <PrivateRoute exact path='/meal' component={MealOrders} />
       </Switch>
-    </>
+    </div>
   );
 }
 
