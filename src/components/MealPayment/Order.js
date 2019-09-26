@@ -7,15 +7,22 @@ const OrderStyle = styled.div`
     margin: 2em auto;
 
     h3 {
-        padding: 0 5em;
+        padding: 0 3em;
         border-bottom: 2px solid black;
     }
 
     td {
         border: 1px solid grey;
         padding: 0 2em;
-    }
 
+        &.column {
+            background-color: rgb(138, 149, 151, 0.4);
+        }
+    }
+    
+    tr:nth-child(odd) {
+        background-color: rgb(86,186,237, 0.7);
+    }
 `
 
 const Order =({ ordered, handleDelete }) => {
@@ -42,13 +49,15 @@ const Order =({ ordered, handleDelete }) => {
                 <th><h3>Meal Ordered</h3></th>
                 <th><h3>Plates</h3></th>
                 <th><h3>Price/Plate</h3></th>
+                <th><h3>Amount Owed</h3></th>
             </tr>
             {ordered.map((orders => (
-                <tr key={orders.name}>
+                <tr className={`tr${ordered.indexOf(orders)}`} key={ordered.indexOf(orders)}>
                     <td>{orders.name}</td>
-                    <td>{orders.order}</td>
+                    <td className = 'column'>{orders.order}</td>
                     <td>{orders.plates}</td>
-                    <td>{orders.price}</td>
+                    <td className = 'column'>{orders.price}</td>
+                    <td >{Number(orders.plates) * orders.price}</td>
                     <Button onClick={() => handleDelete(orders)}>Delete</Button>
                 </tr>
             )))}
@@ -62,6 +71,7 @@ const Order =({ ordered, handleDelete }) => {
                             platesArray.reduce((a,b) => a+b, 0)
                         }
                     </td>
+                    <td>---</td>
                     <td>
                         {
                             priceArray.reduce((a,b) => a+b, 0)

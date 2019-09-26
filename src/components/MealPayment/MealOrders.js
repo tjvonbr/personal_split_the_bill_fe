@@ -35,6 +35,7 @@ function MealOrders() {
     const [ordered, setOrdered] = useState([])
 
     const handleSubmit = (input, actions) => {
+        debugger
         //setForm(input);
         const infoToAdd = {
             name: input.name,
