@@ -70,7 +70,7 @@ function SignUp({ errors, touched, values }) {
           </Form>
 
           <div id="formFooter">
-            <Link className="underlineHover">All fields are required!</Link>
+            <Link to='/' className="underlineHover">All fields are required!</Link>
           </div>
         </div>
       </div>
@@ -79,10 +79,13 @@ function SignUp({ errors, touched, values }) {
 }
 
 const FormikSignUpForm = withFormik({
-  mapPropsToValues({ firstName, lastName, email, password, passwordConfirm }) {
+  
+  
+  mapPropsToValues({ firstName, lastName, username, email, password, passwordConfirm }) {
     return {
       firstName: firstName || "",
       lastName: lastName || "",
+      username: username || '',
       email: email || "",
       password: password || ""
       // passwordConfirm: passwordConfirm || ''

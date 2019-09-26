@@ -1,6 +1,6 @@
 {
-  "name": "SplitTheBill",
-  "short_name": "SplitTheBill",
+  "name": "splitthebill",
+  "short_name": "splitthebill",
   "icons": [{
     "src": "/android-chrome-192x192.png",
     "sizes": "192x192",

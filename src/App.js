@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import Nav from "./components/Nav";
@@ -36,7 +36,6 @@ function App() {
       <Nav drawerClickHandler={drawerToggleClickHandler} />
       <SideDrawer show={state} />
       {backdrop}
-
       <Switch>
         <Route exact path="/" component={FormikLoginForm} />
         <Route exact path="/signup" component={FormikSignUpForm} />
