@@ -7,6 +7,8 @@ import * as yup from 'yup';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import axios from 'axios';
 
+import TableNav from '../TableNav'
+
 const validationSchema = yup.object().shape({
     name: yup.string()
                 .max(40, 'Field cannot be longer than 40 characters')
@@ -71,7 +73,7 @@ function MealOrders() {
     }
 
     const MealOrdersStyle = styled.div`
-
+        margin-top: 3%;
         font-family: 'Vast Shadow'
 
         h2 {
@@ -149,6 +151,8 @@ function MealOrders() {
     `
 
     return (
+      <>
+      <TableNav />
         <MealOrdersStyle>
             <h2>Meals and Prices</h2>
             <Formik initialForm={initialForm}
@@ -189,6 +193,7 @@ function MealOrders() {
             </table>
             
         </MealOrdersStyle>
+        </>
     )
 }
 
