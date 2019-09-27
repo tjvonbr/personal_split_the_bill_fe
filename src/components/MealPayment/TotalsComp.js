@@ -1,7 +1,7 @@
 import React from "react";
 import { List } from "semantic-ui-react";
 import {splitTheBill, spendOnMeal} from './Totals';
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 
 const TotalComp = props => {
   console.log("this is from totalscomp", props.ordered);
@@ -26,8 +26,6 @@ const TotalComp = props => {
               <List.Description>For the last {people.plates} {people.order} {people.name} spent ${people.price}</List.Description>
             </List.Content>
           </List.Item>
-    
-
         );
       })}
       </List>
