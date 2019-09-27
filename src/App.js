@@ -7,6 +7,8 @@ import FormikLoginForm from './components/Login';
 import FormikSignUpForm from './components/SignUp';
 import UserHome from './components/UserHome';
 
+import ContactsList from './components/Contacts/ContactList';
+
 
 import BackDrop from './components/BackDrop/BackDrop';
 import SideDrawer from './components/SideDrawer/SideDrawer';
@@ -39,7 +41,7 @@ function App() {
         <Route exact path='/' component={FormikLoginForm} />
         <Route exact path='/signup' component={FormikSignUpForm} />
         <PrivateRoute exact path='/welcome' component={UserHome} />
-        {/* <PrivateRoute path='/Plate' component={MealPlate} /> */}
+        <PrivateRoute path='/friends' component={ContactsList} />
         <PrivateRoute exact path='/meal' component={MealOrders} />
       </Switch>
     </div>

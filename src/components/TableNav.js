@@ -1,5 +1,4 @@
 import React from "react";
-
 import styled from "styled-components";
 import TableImage from '../img/table_with_view.jpg';
 

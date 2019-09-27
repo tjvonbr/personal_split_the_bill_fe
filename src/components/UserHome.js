@@ -40,7 +40,7 @@ const UserHome = () => {
       </div>
       <div className="icons-container">
         <div className="icons">
-          <Link to="/contacts">
+          <Link to="/friends">
             <IconContacts name="users" size="massive" />
             <h4>Friends</h4>
           </Link>
