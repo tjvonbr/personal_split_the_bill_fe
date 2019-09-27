@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button } from "semantic-ui-react";
 
+import TotalComp from './TotalsComp';
+
 const OrderStyle = styled.div`
     text-align: center;
     margin: 2em auto;
@@ -38,15 +40,7 @@ const OrderStyle = styled.div`
 `
 
 const Order =({ ordered, handleDelete }) => {
-    
-    // const [total, setTotal] = useState(0)
-
-    // ordered.map((orders => (
-    //     setTotal(orders.price)
-    // )));
-
-    //setTotal(orders.price)
-    console.log(ordered);
+  const [showText, setShowText] = useState(false);
     const priceArray = ordered.map((orders => (
         Number(orders.plates) * orders.price
     )))
@@ -96,6 +90,13 @@ const Order =({ ordered, handleDelete }) => {
                     </td>
                 </tr>
             }
+
+            {ordered.length ? (
+              <Button onClick={() => setShowText(!showText)}>Split the bill</Button>
+            ):(
+              <p></p>
+            )}
+            {showText && <TotalComp ordered={ordered}/>}
         </OrderStyle>
     )
 }

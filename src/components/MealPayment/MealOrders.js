@@ -37,7 +37,7 @@ function MealOrders() {
     const [ordered, setOrdered] = useState([])
 
     const handleSubmit = (input, actions) => {
-        debugger
+        // debugger
         //setForm(input);
         const infoToAdd = {
             name: input.name,
@@ -47,7 +47,7 @@ function MealOrders() {
         }
         
         setOrdered(ordered.concat(infoToAdd))
-        debugger
+        // debugger
         
         // axios.post(mealApi, infoToAdd)
         //     .then(res => {
@@ -68,7 +68,7 @@ function MealOrders() {
         const results = ordered.filter((el) => el.name !== meal.name) //? ordered.splice((ordered.indexOf(el)), 1) : null)
         // delete()
         setOrdered(results);
-        debugger
+        // debugger
         //setOrdered();
     }
 
