@@ -20,7 +20,7 @@ const Nav = props => (
         <Link to="/welcome">Home</Link>
         <Link to="/">Login</Link>
         <Link to="/signup">Sign Up</Link>
-        <Link to="/contacts"> Contacts </Link>
+        <Link to="/friends"> Contacts </Link>
         <Link to='/' onClick={logout}>Sign Out</Link>
       </div>
     </nav>
