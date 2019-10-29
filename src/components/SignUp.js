@@ -101,12 +101,6 @@ const FormikSignUpForm = withFormik({
   }),
 
   handleSubmit(values, { resetForm, setStatus, props }) {
-    // console.log("signup first =", values.firstName);
-    // console.log("signup last = ", values.lastName);
-    // console.log("signup email =", values.username);
-
-    // console.log("signup email =", values.email);
-    // console.log("signup password =", values.password);
 
     let submitValues = {
       firstName: values.firstName,
