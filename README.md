@@ -1,5 +1,10 @@
 # Split the Bill
 
+## Contributors
+* Trevor Von Bruenchenhein
+* Jeff Oliver
+* Eralp Kor
+
 ## Overview
 Split the Bill is a web application designed to make splitting the bill amongst a group of fellow restaurant-goers a simpler task.  Some of the established payment applications (e.g., Venmo, Cash, etc.) already make sending and receiving payments easier, but for each of the provided examples, we still have to compute how much each individual is going to be charged, then request that amount.  With Split the Bill, however, we only need to enter the bill's total amount, then select the individuals who are present.  Split the Bill will then request an equal payment from everyone sitting at the table.
 
