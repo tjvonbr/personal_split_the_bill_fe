@@ -1,244 +1,35 @@
-import React from 'react'
-import { Button, Card, Image } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+import ContactCard from '../Contacts/ContactCard';
 import 'semantic-ui-css/semantic.min.css';
 import TableNav from '../TableNav';
-import styled from "styled-components";
 
-const Container = styled.div`
-  margin: 0 auto;
-`
+const ContactsList = () => {
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    fetchUsers();
+  }, [])
 
-const ContactsList = () => (
-  <>
-  
-  <TableNav />
-  <Container className='container'>
-  <Card.Group>
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
-        />
-        <Card.Header>Steve Sanders</Card.Header>
-        <Card.Meta>Friends of Elliot</Card.Meta>
-        <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Edit
-          </Button>
-          <Button basic color='red'>
-            Delete
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='https://react.semantic-ui.com/images/avatar/large/molly.png'
-        />
-        <Card.Header>Molly Thomas</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Molly wants to add you to the group <strong>musicians</strong>
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Edit
-          </Button>
-          <Button basic color='red'>
-            Delete
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='https://react.semantic-ui.com/images/avatar/large/jenny.jpg'
-        />
-        <Card.Header>Jenny Lawrence</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Jenny requested permission to view your contact details
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Edit
-          </Button>
-          <Button basic color='red'>
-            Delete
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
+  // Fetches all available users from the database
+  const fetchUsers = () => {
+    axios.get("https://split-the-bill-bw.herokuapp.com/api/user/")
+      .then(response => {
+        setUsers(response.data);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  };
 
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
-        />
-        <Card.Header>Mike Law</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Jenny requested permission to view your contact details
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Edit
-          </Button>
-          <Button basic color='red'>
-            Delete
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
-        />
-        <Card.Header>Kid Rock</Card.Header>
-        <Card.Meta>Friends of Elliot</Card.Meta>
-        <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Edit
-          </Button>
-          <Button basic color='red'>
-            Delete
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='https://react.semantic-ui.com/images/avatar/large/molly.png'
-        />
-        <Card.Header>Mary Well</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Molly wants to add you to the group <strong>musicians</strong>
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Edit
-          </Button>
-          <Button basic color='red'>
-            Delete
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='https://react.semantic-ui.com/images/avatar/large/jenny.jpg'
-        />
-        <Card.Header>Jen Rockstar</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Jenny requested permission to view your contact details
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Edit
-          </Button>
-          <Button basic color='red'>
-            Delete
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='https://react.semantic-ui.com/images/avatar/large/jenny.jpg'
-        />
-        <Card.Header>Jenny Lawrence</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Jenny requested permission to view your contact details
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Edit
-          </Button>
-          <Button basic color='red'>
-            Delete
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
-        />
-        <Card.Header>Steve Sanders</Card.Header>
-        <Card.Meta>Friends of Elliot</Card.Meta>
-        <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Edit
-          </Button>
-          <Button basic color='red'>
-            Delete
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-    
-  </Card.Group>
-  </Container>
-  </>
-)
+  return (
+    <>
+      <TableNav />
+      {users.map(user => (
+        <ContactCard user={user} />
+      ))}
+    </>
+  )
+};
 
 export default ContactsList

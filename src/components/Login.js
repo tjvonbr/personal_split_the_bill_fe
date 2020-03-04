@@ -1,10 +1,8 @@
 import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
-
 import { Form, Field , withFormik } from "formik";
 import * as Yup from "yup";
-
 import Table from "../img/table.jpg";
 import "./Login.css";
 
@@ -27,17 +25,17 @@ function Login({ errors, touched }) {
               id="login"
               className="fadeIn second"
               name="username"
-              placeholder="user name"
+              placeholder="Username"
             />
             <Field
               type="password"
               id="password"
               className="fadeIn third"
               name="password"
-              placeholder="password"
+              placeholder="Password"
             />
             {touched.password && errors.password && <p> {errors.password} </p>}
-            <button type="submit" className="fadeIn fourth"  >{' '}Login{' '}</button>
+            <button type="submit" className="fadeIn fourth">Login</button>
           </Form>
 
           <div id="formFooter">
