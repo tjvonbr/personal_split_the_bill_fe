@@ -30,21 +30,21 @@ function SignUp({ errors, touched, values }) {
               id="login"
               className="fadeIn second"
               name="firstName"
-              placeholder="first name"
+              placeholder="First Name"
             />
             <Field
               type="text"
               id="login"
               className="fadeIn second"
               name="lastName"
-              placeholder="last Name"
+              placeholder="Last Name"
             />
             <Field
               type="text"
               id="login"
               className="fadeIn third"
               name="username"
-              placeholder="Please enter a user name"
+              placeholder="Username"
             />{" "}
             {touched.username && errors.username && <p>{errors.username}</p>}
             <Field
@@ -52,7 +52,7 @@ function SignUp({ errors, touched, values }) {
               id="password"
               className="fadeIn third"
               name="email"
-              placeholder="Jane@gmail.com"
+              placeholder="Email"
             />{" "}
             {touched.email && errors.email && <p>{errors.email}</p>}
             <Field
@@ -60,7 +60,7 @@ function SignUp({ errors, touched, values }) {
               id="password"
               className="fadeIn third"
               name="password"
-              placeholder="******"
+              placeholder="Password"
             />
             {touched.password && errors.password && <p>{errors.password}</p>}
             <button type="submit" className="fadeIn fourth">
