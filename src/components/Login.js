@@ -60,8 +60,8 @@ const FormikLoginForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("I'm not a Jedi"),
-    password: Yup.string().required("Password is required")
+    username: Yup.string().required("A username is required!"),
+    password: Yup.string().required("A password is required!")
   }),
   handleSubmit(values, { resetForm, setStatus, props }) {
     let submitValues = {
@@ -72,11 +72,6 @@ const FormikLoginForm = withFormik({
     axiosWithAuth()
       .post('/login', submitValues)
       .then(res => {
-        // console.log(
-        //   "login success, login Payload =",
-        //   res.data.token,
-        //   res.data.message
-        // );
         setStatus(res.data.token);
         resetForm();
         localStorage.setItem("token", res.data.token);
@@ -88,22 +83,3 @@ const FormikLoginForm = withFormik({
 })(Login);
 
 export default FormikLoginForm;
-
-
-// var api_key = process.env.API_KEY;
-
-// export const loginHandler = (u,p) => dispatch => {
-//     axios
-//       .post(`http://thewebbranch.com/oauth/token`, `grant_type=password&username=${u}&password=${p}`,{
-//         headers:{
-//           'Authorization':`Basic ${api_key}`,
-//           'Content-Type': 'application/x-www-form-urlencoded'
-//         }
-//       })
-//       .then(res=> dispatch({ type: LOGIN, payload:res }))
-//       .catch(err => dispatch({type:LOGIN_FAIL,payload:err}))  
-//   }
-// {
-//   "username": "bvonbru",
-//   "password": "test123"
-// }
