@@ -1,5 +1,4 @@
 # Split the Bill
-### Backend
 
 ## Contributors
 * Trevor Von Bruenchenhein
